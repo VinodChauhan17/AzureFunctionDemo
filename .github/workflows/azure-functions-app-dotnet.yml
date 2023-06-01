@@ -48,10 +48,7 @@ jobs:
         run: dotnet restore
         working-directory: ${{ env.ROOT_SOLUTION_PATH }}
     
-      - name: TEST Settings
-        env:
-          Settings__DefaultDbConnection: ${{ env.AZURE_FUNCTIONAPP_NAME}}
-     
+         
       - name: Clean debug configuration output
         run: dotnet clean
         working-directory: ${{ env.ROOT_SOLUTION_PATH }}
