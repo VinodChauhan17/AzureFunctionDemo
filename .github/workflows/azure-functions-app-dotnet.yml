@@ -26,8 +26,6 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDS_FUNCTION_APP }}
      
-    
-     
       - name: Get the latest source code commit
         uses: actions/checkout@v2        
               
@@ -48,11 +46,7 @@ jobs:
         run: dotnet restore
         working-directory: ${{ env.ROOT_SOLUTION_PATH }}
     
-      - name: Run database migration(s)
-        env:
-          Settings__DefaultDbConnection: ${{secrets.FIRST_SECRET }}
-        run: tree
-        working-directory: ${{ env.AZURE_FUNCTION_PROJ_PATH }}
+
         
       - name: Clean debug configuration output
         run: dotnet clean
