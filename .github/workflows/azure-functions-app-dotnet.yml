@@ -32,11 +32,16 @@ jobs:
       - name: List project files before build.settings.json rename
         run: tree
         working-directory: ${{ env.AZURE_FUNCTION_PROJ_PATH }}
-      
+
       - name: Rename build.settings.json to local.settings.json
         run: mv build.settings.json local.settings.json
         working-directory: ${{ env.AZURE_FUNCTION_PROJ_PATH }}
-        
+      - name: Run database migration(s)
+        env:
+          Settings__DefaultDbConnection: ${{ secrets.FIRST_SECRET }}
+        run: tree
+        working-directory: ${{ env.AZURE_FUNCTION_PROJ_PATH }}
+  
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
