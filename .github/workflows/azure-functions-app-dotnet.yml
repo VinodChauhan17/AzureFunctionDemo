@@ -50,7 +50,7 @@ jobs:
     
       - name: Run database migration(s)
         env:
-          Settings__DefaultDbConnection: ${{sssssssss }}
+          Settings__DefaultDbConnection: ${{secrets.FIRST_SECRET }}
         run: tree
         working-directory: ${{ env.AZURE_FUNCTION_PROJ_PATH }}
         
