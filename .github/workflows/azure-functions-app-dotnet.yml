@@ -32,10 +32,7 @@ jobs:
             keyvault: sp-key-manager
             secrets: "db-key"
         id: tradeKeyVault
-      - shell: |
-         echo "sample-secret is:" 
-         echo "$(db-key)"
-  
+     
       - name: Get the latest source code commit
         uses: actions/checkout@v2        
               
