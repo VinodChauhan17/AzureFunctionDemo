@@ -25,7 +25,17 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDS_FUNCTION_APP }}
-    
+     
+      - name: Retrieve information from key vault
+        uses: Azure/get-keyvault-secrets@v1
+        with:
+            keyvault: sp-key-manager
+            secrets: "db-key"
+        id: tradeKeyVault
+      - shell: |
+         echo "sample-secret is:" 
+         echo "$(db-key)"
+  
       - name: Get the latest source code commit
         uses: actions/checkout@v2        
               
